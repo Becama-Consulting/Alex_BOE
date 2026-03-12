@@ -1,6 +1,31 @@
 En el directorio boe_lector esta el script en python que comprueba el boe por fecha y dentro de los resultados extrae los BOE-A que son los consolidados y busca referencias a los aranceles notariasles.
 
 
+Para ejecutar el script por primera vez hay que crear un entorno de python
+
+```
+python -m venv venv
+source venv/bin/activate
+```
+
+Y ejecutar el script
+
+```
+python boe_lector.py 20221222
+```
+
+Si no se pone fecha a revisar coge el dia de hoy
+
+Para programar esto es muy sencillo desde un cron de servidor con el siguente comando en el crontrab
+
+```
+00 13 * * * /bin/bash -c 'source /home/ubuntu/boe_lector/venv/bin/activate && python /home/ubuntu/boe_lector/boe_lector.py' > /tmp/0034.log
+```
+
+
+El resultado es similar al ejemplo donde devuelve el match que ha hecho, el texto a revisar y la url
+
+
 ```
 ══════════════════════════════════════════════════════════════════════
   ▶ BOE LECTOR  —  Sumario del 22/12/2022
