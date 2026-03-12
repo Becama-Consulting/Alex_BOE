@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Minutas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <header>
+            <h1>Calculadora de Minutas</h1>
+            <p class="subtitle">Calcula tus honorarios profesionales</p>
+        </header>
+
+        <main>
+            <!-- Cronómetro -->
+            <section class="card timer-card">
+                <h2>Cronómetro</h2>
+                <p class="timer-hint">Registra el tiempo dedicado a tu trabajo</p>
+                <div class="timer-display" id="timerDisplay">00:00:00</div>
+                <div class="timer-controls">
+                    <button class="btn btn-start" id="btnStart">Iniciar</button>
+                    <button class="btn btn-pause" id="btnPause" disabled>Pausar</button>
+                    <button class="btn btn-reset" id="btnReset" disabled>Reiniciar</button>
+                </div>
+            </section>
+
+            <!-- Configuración de tarifa -->
+            <section class="card rate-card">
+                <h2>Tarifa</h2>
+                <div class="form-group">
+                    <label for="ratePerHour">Precio por hora (€)</label>
+                    <input type="number" id="ratePerHour" placeholder="Ej: 80" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="concept">Concepto</label>
+                    <select id="concept">
+                        <option value="">Selecciona un tipo</option>
+                        <option value="consulta">Consulta general</option>
+                        <option value="redaccion">Redacción de documentos</option>
+                        <option value="revision">Revisión de contratos</option>
+                        <option value="asesoria">Asesoría especializada</option>
+                        <option value="gestion">Gestión administrativa</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group" id="customConceptGroup" style="display:none;">
+                    <label for="customConcept">Concepto personalizado</label>
+                    <input type="text" id="customConcept" placeholder="Describe el concepto">
+                </div>
+            </section>
+
+            <!-- Conceptos adicionales -->
+            <section class="card extras-card">
+                <h2>Conceptos adicionales</h2>
+                <div id="extrasList">
+                    <!-- Se añaden dinámicamente -->
+                </div>
+                <button class="btn btn-add" id="btnAddExtra">+ Añadir concepto</button>
+            </section>
+
+            <!-- Cálculo -->
+            <section class="card result-card">
+                <h2>Resumen de la minuta</h2>
+                <button class="btn btn-calculate" id="btnCalculate">Calcular minuta</button>
+
+                <div class="result-breakdown" id="resultBreakdown" style="display:none;">
+                    <div class="result-line">
+                        <span>Tiempo registrado</span>
+                        <span id="resultTime">--</span>
+                    </div>
+                    <div class="result-line">
+                        <span>Tarifa/hora</span>
+                        <span id="resultRate">--</span>
+                    </div>
+                    <div class="result-line">
+                        <span>Concepto principal</span>
+                        <span id="resultConcept">--</span>
+                    </div>
+                    <div class="result-line subtotal-line">
+                        <span>Subtotal por tiempo</span>
+                        <span id="resultSubtotalTime">--</span>
+                    </div>
+                    <div id="resultExtras">
+                        <!-- Extras dinámicos -->
+                    </div>
+                    <div class="result-line subtotal-line">
+                        <span>Base imponible</span>
+                        <span id="resultBase">--</span>
+                    </div>
+                    <div class="result-line">
+                        <span>IVA (21%)</span>
+                        <span id="resultIVA">--</span>
+                    </div>
+                    <div class="result-line total-line">
+                        <span>TOTAL</span>
+                        <span id="resultTotal">--</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Acceso a otras calculadoras -->
+        <section class="card" style="text-align:center;">
+            <h2>Otras calculadoras</h2>
+            <a href="polizas.html" class="btn btn-calculate" style="display:inline-block; max-width:300px; text-decoration:none; margin-bottom:10px;">
+                Calculadora de Pólizas
+            </a>
+            <br>
+            <a href="familia.html" class="btn btn-calculate" style="display:inline-block; max-width:300px; text-decoration:none;">
+                Calculadora de Familia
+            </a>
+        </section>
+
+        <footer>
+            <p>Calculadora de Minutas &mdash; Herramienta de cálculo de honorarios</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

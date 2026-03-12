@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Familia</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: var(--color-primary);
+            background: rgba(0, 113, 227, 0.07);
+            color: var(--color-primary);
+        }
+
+        .radio-option label:hover {
+            border-color: var(--color-primary);
+            background: rgba(0, 113, 227, 0.04);
+        }
+
+        .radio-group-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--color-primary);
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-weight: 500;
+            transition: opacity 0.15s;
+        }
+
+        .nav-back:hover { opacity: 0.75; }
+
+        .campos-dinamicos { display: none; }
+        .campos-dinamicos.visible { display: block; }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--color-primary);
+            background: rgba(0, 113, 227, 0.04);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--color-primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-item .folios-hint {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-left: auto;
+        }
+
+        .copias-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .copias-grid .form-group {
+            margin-bottom: 0;
+        }
+
+        .copias-grid label {
+            font-size: 12px !important;
+        }
+
+        .result-section-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-text-secondary);
+            padding: 10px 0 4px;
+            border-top: 1px solid var(--color-border);
+            margin-top: 6px;
+        }
+
+        .result-line-sub {
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .result-line-sub span:last-child {
+            font-weight: 500;
+        }
+
+        .result-nota {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            text-align: center;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .copias-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header>
+            <a href="index.html" class="nav-back">&#8592; Calculadora de Minutas</a>
+            <h1>Calculadora de Familia</h1>
+            <p class="subtitle">Honorarios notariales para actos de familia</p>
+        </header>
+
+        <main>
+            <!-- Tipo de acto -->
+            <section class="card">
+                <h2>Tipo de acto</h2>
+                <div class="form-group" style="margin-bottom:0;">
+                    <label for="tipo_familia">Selecciona el acto familiar</label>
+                    <select id="tipo_familia">
+                        <option value="">-- Selecciona --</option>
+                        <option value="PDR">Pareja de Hecho Registrada</option>
+                        <option value="DPE">Disolución de Pareja Estable</option>
+                        <option value="MAT">Matrimonio</option>
+                        <option value="FEM">Formalización Expediente Matrimonial</option>
+                        <option value="DIV">Divorcio</option>
+                        <option value="CAA">Capitulaciones Antes del Matrimonio</option>
+                        <option value="CAD">Capitulaciones Después del Matrimonio</option>
+                        <option value="EMA">Emancipación</option>
+                        <option value="NDT">Nombramiento de Tutor</option>
+                        <option value="AUC">Autocuratela</option>
+                        <option value="CDA">Consentimiento Divorciado Ascendientes</option>
+                        <option value="CMP">Constitución de Patrimonio Protegido</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Campos dinámicos por tipo -->
+            <section class="card campos-dinamicos" id="campos_card">
+                <h2 id="campos_titulo">Datos del acto</h2>
+                <div id="campos_contenido"></div>
+            </section>
+
+            <!-- Copias -->
+            <section class="card campos-dinamicos" id="copias_card">
+                <h2>Copias</h2>
+                <p class="timer-hint" style="margin-top:-8px; margin-bottom:16px;">Incluye las copias por defecto del acto seleccionado</p>
+                <div class="copias-grid">
+                    <div class="form-group">
+                        <label for="cs_add">Copias Simples</label>
+                        <input type="number" id="cs_add" min="0" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="ca_add">Copias Autorizadas</label>
+                        <input type="number" id="ca_add" min="0" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="ce_add">Copias Electrónicas</label>
+                        <input type="number" id="ce_add" min="0" value="1">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resultado -->
+            <section class="card result-card campos-dinamicos" id="resultado_card">
+                <h2>Resultado</h2>
+                <button class="btn btn-calculate" id="btn_calcular">Calcular honorarios</button>
+
+                <div class="result-breakdown" id="result_breakdown" style="display:none;">
+
+                    <div class="result-line subtotal-line">
+                        <span id="lbl_honorarios_tipo">Honorarios documento</span>
+                        <span id="res_honorarios">--</span>
+                    </div>
+
+                    <div class="result-line" id="row_folio_matriz" style="display:none;">
+                        <span id="lbl_folio_matriz">Folios de Matriz</span>
+                        <span id="res_folio_matriz">--</span>
+                    </div>
+
+                    <div class="result-line" id="row_copias_simples">
+                        <span id="lbl_copias_simples">Copias Simples</span>
+                        <span id="res_copias_simples">--</span>
+                    </div>
+
+                    <div class="result-line" id="row_copias_aut">
+                        <span id="lbl_copias_aut">Copias Autorizadas</span>
+                        <span id="res_copias_aut">--</span>
+                    </div>
+
+                    <div class="result-line" id="row_copias_ele" style="display:none;">
+                        <span id="lbl_copias_ele">Copias Electrónicas</span>
+                        <span id="res_copias_ele">--</span>
+                    </div>
+
+                    <div class="result-line" id="row_testimonios" style="display:none;">
+                        <span>Testimonios</span>
+                        <span id="res_testimonios">--</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span id="lbl_diligencias">Diligencias</span>
+                        <span id="res_diligencias">--</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span>Papel</span>
+                        <span id="res_papel">--</span>
+                    </div>
+
+                    <div class="result-line subtotal-line">
+                        <span>Subtotal</span>
+                        <span id="res_subtotal">--</span>
+                    </div>
+
+                    <div class="result-line">
+                        <span>IVA (21%)</span>
+                        <span id="res_iva">--</span>
+                    </div>
+
+                    <div class="result-line total-line">
+                        <span>TOTAL</span>
+                        <span id="res_total">--</span>
+                    </div>
+
+                    <!-- Bloque extra para FEM -->
+                    <div id="bloque_fem" style="display:none;">
+                        <div class="result-section-title">Acta Final del Matrimonio (incluida)</div>
+                        <div class="result-line result-line-sub">
+                            <span>Honorarios acta</span>
+                            <span id="fem_res_honorarios">--</span>
+                        </div>
+                        <div class="result-line result-line-sub">
+                            <span>Folios Matriz</span>
+                            <span id="fem_res_folio_matriz">--</span>
+                        </div>
+                        <div class="result-line result-line-sub">
+                            <span>Copias</span>
+                            <span id="fem_res_copias">--</span>
+                        </div>
+                        <div class="result-line result-line-sub">
+                            <span>Diligencias</span>
+                            <span id="fem_res_diligencias">--</span>
+                        </div>
+                        <div class="result-line result-line-sub">
+                            <span>Papel</span>
+                            <span id="fem_res_papel">--</span>
+                        </div>
+                        <div class="result-line result-line-sub">
+                            <span>IVA (21%)</span>
+                            <span id="fem_res_iva">--</span>
+                        </div>
+                        <div class="result-line subtotal-line">
+                            <span>Total Acta Final</span>
+                            <span id="fem_res_total">--</span>
+                        </div>
+                        <div class="result-line total-line">
+                            <span>TOTAL COMPLETO</span>
+                            <span id="fem_res_total_completo">--</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Calculadora de Familia &mdash; Honorarios conforme al Arancel Notarial</p>
+        </footer>
+    </div>
+
+    <script src="aranceles.js"></script>
+    <script src="familia_calc.js"></script>
+</body>
+</html>

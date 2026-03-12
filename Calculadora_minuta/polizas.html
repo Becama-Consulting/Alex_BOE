@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Pólizas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos específicos para Pólizas */
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: var(--color-primary);
+            background: rgba(0, 113, 227, 0.07);
+            color: var(--color-primary);
+        }
+
+        .radio-option label:hover {
+            border-color: var(--color-primary);
+            background: rgba(0, 113, 227, 0.04);
+        }
+
+        .radio-group-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .importe-input-wrapper {
+            position: relative;
+        }
+
+        .importe-input-wrapper input {
+            padding-right: 36px;
+        }
+
+        .importe-suffix {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            pointer-events: none;
+        }
+
+        .result-honorarios {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .result-irpf {
+            color: var(--color-orange);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--color-primary);
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-weight: 500;
+            transition: opacity 0.15s;
+        }
+
+        .nav-back:hover {
+            opacity: 0.75;
+        }
+
+        .info-box {
+            background: rgba(0, 113, 227, 0.05);
+            border: 1px solid rgba(0, 113, 227, 0.15);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .info-box strong {
+            color: var(--color-text);
+        }
+
+        .result-line.irpf-line {
+            display: none;
+        }
+
+        .badge-minimo {
+            font-size: 11px;
+            background: rgba(255, 149, 0, 0.12);
+            color: var(--color-orange);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 480px) {
+            .radio-group {
+                gap: 8px;
+            }
+            .radio-option {
+                min-width: calc(50% - 4px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header>
+            <a href="index.html" class="nav-back">&#8592; Calculadora de Minutas</a>
+            <h1>Calculadora de Pólizas</h1>
+            <p class="subtitle">Honorarios notariales por intervención en pólizas</p>
+        </header>
+
+        <main>
+            <!-- Información -->
+            <div class="info-box">
+                Los honorarios se calculan conforme al <strong>Arancel Notarial</strong> vigente para la intervención en pólizas mercantiles (préstamos y créditos).
+            </div>
+
+            <!-- Datos de la póliza -->
+            <section class="card">
+                <h2>Datos de la póliza</h2>
+
+                <!-- Importe -->
+                <div class="form-group">
+                    <label for="importe">Importe del contrato (€)</label>
+                    <div class="importe-input-wrapper">
+                        <input
+                            type="number"
+                            id="importe"
+                            placeholder="Ej: 50000"
+                            min="0"
+                            step="0.01"
+                        >
+                        <span class="importe-suffix">€</span>
+                    </div>
+                </div>
+
+                <!-- Vencimiento -->
+                <div class="form-group">
+                    <span class="radio-group-label">Plazo de vencimiento</span>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="vencimiento" id="v_corto" value="0">
+                            <label for="v_corto">6 meses o menos</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="vencimiento" id="v_largo" value="1">
+                            <label for="v_largo">Más de 6 meses</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garantes -->
+                <div class="form-group">
+                    <span class="radio-group-label">¿Existen garantes o fiadores?</span>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="garantes" id="g_no" value="0">
+                            <label for="g_no">No</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="garantes" id="g_si" value="1">
+                            <label for="g_si">Sí</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empresa -->
+                <div class="form-group">
+                    <span class="radio-group-label">¿El titular es una empresa o profesional?</span>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="empresa" id="e_no" value="0">
+                            <label for="e_no">No (particular)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="empresa" id="e_si" value="1">
+                            <label for="e_si">Sí (aplica IRPF)</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resultado -->
+            <section class="card result-card">
+                <h2>Resultado</h2>
+                <button class="btn btn-calculate" id="btnCalcular">Calcular honorarios</button>
+
+                <div class="result-breakdown" id="resultBreakdown" style="display:none;">
+                    <div class="result-line">
+                        <span>Importe del contrato</span>
+                        <span id="resImporte">--</span>
+                    </div>
+                    <div class="result-line">
+                        <span>Vencimiento</span>
+                        <span id="resVencimiento">--</span>
+                    </div>
+                    <div class="result-line">
+                        <span>Garantes</span>
+                        <span id="resGarantes">--</span>
+                    </div>
+                    <div class="result-line subtotal-line">
+                        <span>
+                            Honorarios notariales
+                            <span class="badge-minimo" id="badgeMinimo" style="display:none;">mínimo</span>
+                        </span>
+                        <span id="resHonorarios" class="result-honorarios">--</span>
+                    </div>
+                    <div class="result-line">
+                        <span>IVA (21%)</span>
+                        <span id="resIVA">--</span>
+                    </div>
+                    <div class="result-line irpf-line" id="irpfLine">
+                        <span>IRPF (−15%)</span>
+                        <span id="resIRPF" class="result-irpf">--</span>
+                    </div>
+                    <div class="result-line total-line">
+                        <span>TOTAL</span>
+                        <span id="resTotal">--</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Calculadora de Pólizas &mdash; Honorarios conforme al Arancel Notarial</p>
+        </footer>
+    </div>
+
+    <script src="aranceles.js"></script>
+    <script src="polizas.js"></script>
+</body>
+</html>
