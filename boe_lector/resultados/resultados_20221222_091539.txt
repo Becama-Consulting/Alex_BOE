@@ -1,0 +1,34 @@
+BOE LECTOR — Resultados para el sumario del 20221222
+Generado el 2026-03-12 09:16:01
+Total de coincidencias: 5
+======================================================================
+
+[1] BOE-A-2022-21739
+    Título:          Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.
+    Palabra clave:   novaci
+    Palabra monetaria: igual
+    Frase:           Incrementando los índices de innovación en el conjunto del territorio, más allá de las concentraciones urbanas, se podrá configurar una red de oportunidades para todos los ciudadanos independientemente del lugar en el que residan, favoreciendo la desconcentración de población y actividades y promoviendo la igualdad de derechos y oportunidades en todo el territorio.
+
+[2] BOE-A-2022-21739
+    Título:          Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.
+    Palabra clave:   exenci
+    Palabra monetaria: igual
+    Frase:           Así, se eleva el importe de la exención de los 12.000 a los 50.000 euros anuales en el caso de entrega de acciones o participaciones a los empleados de empresas emergentes, exención aplicable igualmente cuando dicha entrega sea consecuencia del ejercicio de opciones de compra previamente concedidas a aquellos.
+
+[3] BOE-A-2022-21739
+    Título:          Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.
+    Palabra clave:   emprendedor
+    Palabra monetaria: superior
+    Frase:           El procedimiento de evaluación llevado a cabo por ENISA se efectuará en un plazo, no superior a tres meses, a contar desde la fecha en que la solicitud, completa con toda la información requerida, efectuada por los emprendedores que quieran acogerse a los beneficios y especialidades de esta ley haya tenido entrada en el registro electrónico habilitado a tal fin.
+
+[4] BOE-A-2022-21739
+    Título:          Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.
+    Palabra clave:   arancel
+    Palabra monetaria: inferior
+    Frase:           Los aranceles notariales y registrales, en el caso de que los emprendedores que se acojan a los estatutos tipo adaptados a las necesidades de las empresas emergentes, a los que se refiere la disposición final duodécima, utilicen el sistema de tramitación telemática del Centro de Información y Red de Creación de Empresas y el capital social sea inferior a 3.100 euros, serán de 60 y 40 euros respectivamente.
+
+[5] BOE-A-2022-21739
+    Título:          Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.
+    Palabra clave:   exenci
+    Palabra monetaria: euros
+    Frase:           La exención prevista en el párrafo anterior será de 50.000 euros anuales en el caso de entrega de acciones o participaciones concedidas a los trabajadores de una empresa emergente a las que se refiere la Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.

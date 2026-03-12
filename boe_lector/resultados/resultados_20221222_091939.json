@@ -1,0 +1,41 @@
+{
+  "fecha_boe": "20221222",
+  "total": 5,
+  "coincidencias": [
+    {
+      "identificador": "BOE-A-2022-21739",
+      "titulo": "Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.",
+      "palabra_clave": "novaci",
+      "palabra_monetaria": "igual",
+      "frase": "Incrementando los índices de innovación en el conjunto del territorio, más allá de las concentraciones urbanas, se podrá configurar una red de oportunidades para todos los ciudadanos independientemente del lugar en el que residan, favoreciendo la desconcentración de población y actividades y promoviendo la igualdad de derechos y oportunidades en todo el territorio."
+    },
+    {
+      "identificador": "BOE-A-2022-21739",
+      "titulo": "Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.",
+      "palabra_clave": "exenci",
+      "palabra_monetaria": "igual",
+      "frase": "Así, se eleva el importe de la exención de los 12.000 a los 50.000 euros anuales en el caso de entrega de acciones o participaciones a los empleados de empresas emergentes, exención aplicable igualmente cuando dicha entrega sea consecuencia del ejercicio de opciones de compra previamente concedidas a aquellos."
+    },
+    {
+      "identificador": "BOE-A-2022-21739",
+      "titulo": "Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.",
+      "palabra_clave": "emprendedor",
+      "palabra_monetaria": "superior",
+      "frase": "El procedimiento de evaluación llevado a cabo por ENISA se efectuará en un plazo, no superior a tres meses, a contar desde la fecha en que la solicitud, completa con toda la información requerida, efectuada por los emprendedores que quieran acogerse a los beneficios y especialidades de esta ley haya tenido entrada en el registro electrónico habilitado a tal fin."
+    },
+    {
+      "identificador": "BOE-A-2022-21739",
+      "titulo": "Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.",
+      "palabra_clave": "arancel",
+      "palabra_monetaria": "inferior",
+      "frase": "Los aranceles notariales y registrales, en el caso de que los emprendedores que se acojan a los estatutos tipo adaptados a las necesidades de las empresas emergentes, a los que se refiere la disposición final duodécima, utilicen el sistema de tramitación telemática del Centro de Información y Red de Creación de Empresas y el capital social sea inferior a 3.100 euros, serán de 60 y 40 euros respectivamente."
+    },
+    {
+      "identificador": "BOE-A-2022-21739",
+      "titulo": "Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes.",
+      "palabra_clave": "exenci",
+      "palabra_monetaria": "euros",
+      "frase": "La exención prevista en el párrafo anterior será de 50.000 euros anuales en el caso de entrega de acciones o participaciones concedidas a los trabajadores de una empresa emergente a las que se refiere la Ley 28/2022, de 21 de diciembre, de fomento del ecosistema de las empresas emergentes."
+    }
+  ]
+}

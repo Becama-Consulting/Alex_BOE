@@ -1,6 +1,4 @@
 venv/
-datos/
-resultados/
 __pycache__/
 *.pyc
 .env
